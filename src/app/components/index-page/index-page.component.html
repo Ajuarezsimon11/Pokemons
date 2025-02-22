@@ -1,0 +1,7 @@
+@if (pokemons$ | async; as pokemons){
+    <select>
+        @for (pokemon of pokemons; track pokemon) {
+            <option [value]="pokemon.nombre" [attr.data-url]="pokemon.url">{{pokemon.nombre}}</option>
+        }
+    </select>
+}
