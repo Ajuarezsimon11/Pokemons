@@ -1,8 +1,12 @@
 @if (pokemons$ | async; as pokemons){
-    <select>
+    <select id="tSelectPokemons" (change)="getValues($event)" >
+        <option value="" selected disabled hidden>Selecciona un pokemon</option>
         @for (pokemon of pokemons; track pokemon) {
-            <option [value]="pokemon.nombre" [attr.data-url]="pokemon.url">{{pokemon.nombre}}</option>
+            <option [value]="pokemon.id" [attr.data-nombre]="pokemon.nombre">{{pokemon.nombre}}</option>
         }
     </select>
+    <br><br>
+    <button type="button" value="Ver Pokemon" (click)="showPokemon($event)">Ver Pokemon Seleccionado</button>
+}@else {
+    <p>No puedo encontrar Pokemons</p>
 }
-<button type="button" (click)="getPokemonStadistics()"></button>
